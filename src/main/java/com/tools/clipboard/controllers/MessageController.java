@@ -20,7 +20,7 @@ public class MessageController {
     @GetMapping("/{id}/get")
     @ResponseBody
     public Message getMessage(@PathVariable String id) {
-        return messageDao.findByExternalId(id);
+        return messageDao.findById(id);
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")

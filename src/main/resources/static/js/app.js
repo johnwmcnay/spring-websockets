@@ -1,7 +1,5 @@
 var stompClient = null;
 
-connect();
-
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);

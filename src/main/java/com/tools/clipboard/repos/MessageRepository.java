@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
-    Message findByExternalId(String id);
+    Message findById(String id);
 }
