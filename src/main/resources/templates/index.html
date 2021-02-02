@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>test</title>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
-clipboard test page
+<form method="POST" action="/message/add">
+    <label> Message: <input type="text" name="message" id="message"></label>
+    <input type="button" onclick="sendMessage()">
+</form>
+<script>
+
+    function sendMessage() {
+        $.ajax({
+            url: "/message/add",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ "message" : $("#message").val()}),
+            success: function () {
+                console.log("works");
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class MessageController {
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public Message addMessage(@RequestBody Message message) {
+    public Message addCustomer(@RequestBody Message message) {
         return messageDao.save(message);
     }
 
