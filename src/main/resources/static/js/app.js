@@ -5,7 +5,7 @@ function connect(room) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         stompClient.subscribe('/topic/messages/' + room, function(messageOutput) {
-            $("#chat").append("<p>" + messageOutput.body + "</p>")
+            $("#chat-room").append("<div>" + messageOutput.body + "</div>")
         });
     });
 }
@@ -18,9 +18,10 @@ function createRoom() {
         success: function (room) {
             console.log("create room works");
             connect(room);
+            $("#room-id").val(room);
+            $("#room-title").html("Room: " + room);
             $("#lobby").hide();
-            $("#room").html("Room: " + room);
-            $("#chat-room").show();
+            $("#room").show()
         }
     });
 }
@@ -32,6 +33,9 @@ function disconnect() {
 }
 
 function sendMessage() {
-    stompClient.send("/app/chat", {},
-        JSON.stringify({ "message" : $("#message").val()}));
+    let room = $("#room-id").val()
+    let $message = $("#message");
+    stompClient.send("/app/chat/" + room, {},
+        JSON.stringify({ "message" : $message.val()}));
+    $message.val("");
 }
