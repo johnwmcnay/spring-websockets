@@ -9,12 +9,16 @@
     <script src="/js/app.js"></script>
 </head>
 <body>
-<form>
-    <label>Room Code: <input type="text" pattern="[A-Za-z]{4}"></label>
-    <button type="submit">Join Existing Room</button>
-</form>
+<div id="lobby">
+    <form id="code">
+        <label>Room Code: <input type="text" pattern="[A-Za-z]{4}"></label>
+        <button type="submit">Join Existing Room</button>
+    </form>
 
-<button>Create Room</button>
+    <button onclick="createRoom()">Create Room</button>
+</div>
+<div id="room"></div>
+
 
 <!--<form method="POST" action="/message/add">-->
 <!--    <label> Message: <input type="text" name="message" id="message"></label>-->
