@@ -4,3 +4,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+#chat-messages {
+    min-height: 100%;
+}

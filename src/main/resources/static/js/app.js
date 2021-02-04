@@ -5,7 +5,12 @@ function connect(room) {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function () {
         stompClient.subscribe('/topic/messages/' + room, function (messageOutput) {
-            $("#chat-room").append("<div>" + messageOutput.body + "</div>")
+
+            //TODO: limit message history to an arbitrary amount
+            $("#chat-messages").append("<div>" + messageOutput.body + "</div>");
+
+            let $chat = $("#chat-room");
+            $chat[0].scrollTop = $chat[0].scrollHeight - $chat[0].clientHeight;
         });
     });
 }
@@ -62,6 +67,21 @@ function disconnect() {
         stompClient.disconnect();
     }
 }
+
+
+$(function() {
+    $("#message").keydown(function(e){
+        if (e.keyCode === 13) {
+            let $message = $("#message");
+
+            if ($message.val().trim() !== "") {
+                sendMessage();
+            }
+
+
+        }
+    });
+});
 
 function sendMessage() {
     let room = $("#room-id").val();

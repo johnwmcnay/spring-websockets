@@ -27,7 +27,9 @@
     <input type="hidden" id="room-id">
     <input type="hidden" id="username-id">
     <h3 id="room-title"></h3>
-    <div id="chat-room" class="border border-primary d-flex flex-column justify-content-end"></div>
+    <div id="chat-room" class="border border-primary">
+        <div id="chat-messages" class="d-flex flex-column justify-content-end"></div>
+    </div>
     <div id="chat-controls">
         <label>Message: <input type="text" id="message"></label>
         <button id="send-message" onclick="sendMessage()">Send</button>
