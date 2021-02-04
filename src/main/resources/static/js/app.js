@@ -3,8 +3,8 @@ let stompClient = null;
 function connect(room) {
     let socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function() {
-        stompClient.subscribe('/topic/messages/' + room, function(messageOutput) {
+    stompClient.connect({}, function () {
+        stompClient.subscribe('/topic/messages/' + room, function (messageOutput) {
             $("#chat-room").append("<div>" + messageOutput.body + "</div>")
         });
     });
@@ -22,11 +22,12 @@ function joinRoom() {
     $.ajax({
         url: "/room/join/" + room + "/?username=" + username,
         type: "POST",
-        success: function(exists) {
+        success: function (exists) {
 
             if (exists) {
                 connect(room);
                 $("#room-id").val(room);
+                $("#username-id").val(username);
                 $("#room-title").html("Room: " + room);
                 $("#lobby").hide();
                 $("#room").show();
@@ -48,6 +49,7 @@ function createRoom() {
 
             connect(room);
             $("#room-id").val(room);
+            $("#username-id").val(username);
             $("#room-title").html("Room: " + room);
             $("#lobby").hide();
             $("#room").show();
@@ -56,15 +58,24 @@ function createRoom() {
 }
 
 function disconnect() {
-    if(stompClient != null) {
+    if (stompClient != null) {
         stompClient.disconnect();
     }
 }
 
 function sendMessage() {
-    let room = $("#room-id").val()
+    let room = $("#room-id").val();
     let $message = $("#message");
+
     stompClient.send("/app/chat/" + room, {},
-        JSON.stringify({ "message" : $message.val()}));
+        JSON.stringify({"message": createMessage()})
+    );
+
     $message.val("");
+}
+
+function createMessage() {
+    let $message = $("#message")
+
+    return $("#username-id").val() + ": " + $message.val()
 }
