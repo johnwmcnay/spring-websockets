@@ -18,12 +18,17 @@ function joinRoom() {
     $.ajax({
         url: "/room/join/" + room,
         type: "POST",
-        success: function(data) {
-            connect(room);
-            $("#room-id").val(room);
-            $("#room-title").html("Room: " + room);
-            $("#lobby").hide();
-            $("#room").show();
+        success: function(exists) {
+
+            if (exists) {
+                connect(room);
+                $("#room-id").val(room);
+                $("#room-title").html("Room: " + room);
+                $("#lobby").hide();
+                $("#room").show();
+            } else {
+                alert("Invalid Room Code");
+            }
         }
     })
 }
