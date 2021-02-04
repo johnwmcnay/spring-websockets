@@ -1,13 +1,23 @@
 let stompClient = null;
 
+const PRIMARY_BG = "bg-light";
+const SECONDARY_BG = "";
+
 function connect(room) {
     let socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function () {
         stompClient.subscribe('/topic/messages/' + room, function (messageOutput) {
 
+            let $chatMessages = $("#chat-messages div");
+            let bg = PRIMARY_BG;
+
+            if ($chatMessages.last().hasClass('bg-light')) {
+                bg = SECONDARY_BG;
+            }
+
             //TODO: limit message history to an arbitrary amount
-            $("#chat-messages").append("<div>" + messageOutput.body + "</div>");
+            $("#chat-messages").append("<div class='p-1 " + bg + "'>" + messageOutput.body + "</div>");
 
             let $chat = $("#chat-room");
             $chat[0].scrollTop = $chat[0].scrollHeight - $chat[0].clientHeight;
@@ -35,7 +45,7 @@ function joinRoom() {
                 $("#username-id").val(username);
                 $("#room-title").html("Room: " + room);
                 $("#lobby").hide();
-                $("#room").show();
+                $("#room").addClass("d-flex");
             } else {
                 alert("Invalid Room Code");
             }
@@ -57,7 +67,7 @@ function createRoom() {
             $("#username-id").val(username);
             $("#room-title").html("Room: " + room);
             $("#lobby").hide();
-            $("#room").show();
+            $("#room").addClass("d-flex");
         }
     });
 }

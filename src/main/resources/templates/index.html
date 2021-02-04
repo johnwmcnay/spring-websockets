@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test</title>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.6.0/js/bootstrap.bundle.js"></script>
@@ -23,7 +24,7 @@
         <button id="join-room" onclick="joinRoom()">Join Existing Room</button> OR <button onclick="createRoom()">Create Room</button>
     </div>
 </div>
-<div class="container" id="room" style="display: none">
+<div class="container flex-column align-items-center" id="room" style="display: none">
     <input type="hidden" id="room-id">
     <input type="hidden" id="username-id">
     <h3 id="room-title"></h3>
