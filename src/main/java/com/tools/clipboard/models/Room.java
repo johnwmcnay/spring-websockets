@@ -17,6 +17,6 @@ public class Room {
     private List<User> users;
 
     public static String generateId() {
-        return RandomStringUtils.randomAlphabetic(4);
+        return RandomStringUtils.randomAlphabetic(4).toUpperCase();
     }
 }

@@ -10,18 +10,36 @@ function connect(room) {
     });
 }
 
+function joinRoom() {
+
+    let room = $("#code").val()
+
+    //TODO: check if room is valid inside controller
+    $.ajax({
+        url: "/room/join/" + room,
+        type: "POST",
+        success: function(data) {
+            connect(room);
+            $("#room-id").val(room);
+            $("#room-title").html("Room: " + room);
+            $("#lobby").hide();
+            $("#room").show();
+        }
+    })
+}
+
 function createRoom() {
 
     $.ajax({
         url: "/room/create",
-        type: "GET",
+        type: "POST",
         success: function (room) {
             console.log("create room works");
             connect(room);
             $("#room-id").val(room);
             $("#room-title").html("Room: " + room);
             $("#lobby").hide();
-            $("#room").show()
+            $("#room").show();
         }
     });
 }

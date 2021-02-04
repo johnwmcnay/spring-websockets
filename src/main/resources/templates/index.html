@@ -14,10 +14,10 @@
 </head>
 <body>
 <div id="lobby">
-    <form id="code">
-        <label>Room Code: <input type="text" pattern="[A-Za-z]{4}"></label>
-        <button type="submit">Join Existing Room</button>
-    </form>
+    <div id="join">
+        <label>Room Code: <input id="code" type="text" pattern="[A-Za-z]{4}"></label>
+        <button id="join-room" onclick="joinRoom()">Join Existing Room</button>
+    </div>
 
     <button onclick="createRoom()">Create Room</button>
 </div>
