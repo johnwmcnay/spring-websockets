@@ -44,7 +44,7 @@ function joinRoom() {
                 $("#room-id").val(room);
                 $("#username-id").val(username);
                 $("#room-title").html("Room: " + room);
-                $("#lobby").hide();
+                $("#lobby").removeClass("d-flex").addClass("d-none");
                 $("#room").addClass("d-flex");
             } else {
                 alert("Invalid Room Code");
@@ -66,7 +66,7 @@ function createRoom() {
             $("#room-id").val(room);
             $("#username-id").val(username);
             $("#room-title").html("Room: " + room);
-            $("#lobby").hide();
+            $("#lobby").removeClass("d-flex").addClass("d-none");
             $("#room").addClass("d-flex");
         }
     });

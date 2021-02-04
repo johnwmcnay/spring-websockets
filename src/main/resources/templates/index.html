@@ -14,28 +14,31 @@
 
 </head>
 <body>
-<div id="lobby">
-    <div id="username">
-        <label>Username: <input type="text" id="username-input"></label>
-    </div>
+<div style="height: 100vh; background: var(--purple);" class="d-flex align-items-center">
+    <div id="lobby" class="container d-flex flex-column align-items-center">
+        <div id="username">
+            <label class="text-white">Username: <br><input type="text" id="username-input" maxlength="12"></label>
+        </div>
 
-    <div id="join">
-        <label>Room Code: <input id="code" type="text" pattern="[A-Za-z]{4}"></label>
-        <button id="join-room" onclick="joinRoom()">Join Existing Room</button> OR <button onclick="createRoom()">Create Room</button>
+        <div id="join" class="d-flex flex-column align-items-center">
+            <label class="text-white">Room Code: <br><input id="code" type="text" pattern="[A-Za-z]{4}" maxlength="4"></label>
+            <button id="join-room" onclick="joinRoom()" class="badge badge-pill">Join Existing Room</button>
+            <span class="text-black-50">or</span>
+            <button onclick="createRoom()" class="badge badge-pill">Create Room</button>
+        </div>
+    </div>
+    <div class="container flex-column align-items-center" id="room" style="display: none">
+        <input type="hidden" id="room-id">
+        <input type="hidden" id="username-id">
+        <h3 id="room-title"></h3>
+        <div id="chat-room" class="border border-primary">
+            <div id="chat-messages" class="d-flex flex-column justify-content-end"></div>
+        </div>
+        <div id="chat-controls">
+            <label>Message: <input type="text" id="message"></label>
+            <button id="send-message" onclick="sendMessage()">Send</button>
+        </div>
     </div>
 </div>
-<div class="container flex-column align-items-center" id="room" style="display: none">
-    <input type="hidden" id="room-id">
-    <input type="hidden" id="username-id">
-    <h3 id="room-title"></h3>
-    <div id="chat-room" class="border border-primary">
-        <div id="chat-messages" class="d-flex flex-column justify-content-end"></div>
-    </div>
-    <div id="chat-controls">
-        <label>Message: <input type="text" id="message"></label>
-        <button id="send-message" onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
 </body>
 </html>
