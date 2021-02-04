@@ -14,15 +14,18 @@
 </head>
 <body>
 <div id="lobby">
-    <div id="join">
-        <label>Room Code: <input id="code" type="text" pattern="[A-Za-z]{4}"></label>
-        <button id="join-room" onclick="joinRoom()">Join Existing Room</button>
+    <div id="username">
+        <label>Username: <input type="text" id="username-input"></label>
     </div>
 
-    <button onclick="createRoom()">Create Room</button>
+    <div id="join">
+        <label>Room Code: <input id="code" type="text" pattern="[A-Za-z]{4}"></label>
+        <button id="join-room" onclick="joinRoom()">Join Existing Room</button> OR <button onclick="createRoom()">Create Room</button>
+    </div>
 </div>
 <div class="container" id="room" style="display: none">
     <input type="hidden" id="room-id">
+    <input type="hidden" id="username-id">
     <h3 id="room-title"></h3>
     <div id="chat-room" class="border border-primary"></div>
     <div id="chat-controls">
