@@ -17,7 +17,7 @@ function connect(room) {
             }
 
             //TODO: limit message history to an arbitrary amount
-            $("#chat-messages").append("<div class='p-1 " + bg + "'>" + messageOutput.body + "</div>");
+            $("#chat-messages").append("<div class='p-1 msg " + bg + "'>" + messageOutput.body + "</div>");
 
             let $chat = $("#chat-room");
             $chat[0].scrollTop = $chat[0].scrollHeight - $chat[0].clientHeight;
