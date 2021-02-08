@@ -19,7 +19,13 @@
         <skipTests>true</skipTests>
     </properties>
     <dependencies>
-<!--        <dependency>-->
+        <dependency>
+            <groupId>com.ibm.cloud</groupId>
+            <artifactId>ibm-cloud-spring-boot-service-bind</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
 <!--        </dependency>-->
