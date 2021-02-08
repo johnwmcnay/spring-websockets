@@ -4,10 +4,6 @@ import com.tools.clipboard.models.Message;
 import com.tools.clipboard.models.Room;
 import com.tools.clipboard.models.Server;
 import com.tools.clipboard.models.User;
-import com.tools.clipboard.repos.MessageRepository;
-import com.tools.clipboard.repos.RoomRepository;
-import com.tools.clipboard.repos.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -19,19 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ChatController {
 
-    @Autowired
-    MessageRepository messageDao;
-
-    @Autowired
-    RoomRepository roomDao;
-
-    @Autowired
-    UserRepository userDao;
-
     @MessageMapping("/chat/{id}")
     @SendTo("/topic/messages/{id}")
     public String send(@PathVariable String id, Message message) {
-        messageDao.save(message);
         return message.getMessage();
     }
 
@@ -51,9 +37,6 @@ public class ChatController {
         server.createRoom(code);
         Room room = server.addUserTo(newUser, code);
 
-        userDao.save(newUser);
-        roomDao.save(room);
-
         return code;
     }
 
@@ -68,9 +51,6 @@ public class ChatController {
             User newUser = new User(username);
 
             Room room = server.addUserTo(newUser, code);
-
-            userDao.save(newUser);
-            roomDao.save(room);
 
             //add user to room's user list and server's master user list
 

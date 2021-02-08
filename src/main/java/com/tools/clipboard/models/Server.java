@@ -2,13 +2,10 @@ package com.tools.clipboard.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.redis.core.RedisHash;
-
 import java.util.HashMap;
 
 @Getter
 @Setter
-@RedisHash(value = "server")
 public class Server {
 
     private static Server server = new Server();
