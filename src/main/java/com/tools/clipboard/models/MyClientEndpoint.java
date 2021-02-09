@@ -10,10 +10,12 @@ public class MyClientEndpoint {
 
     @OnOpen
     public void myOnOpen (Session session) {
+        System.out.println("session.getUserProperties() = " + session.getUserProperties());
         System.out.println("session.getPathParameters() = " + session.getPathParameters());
         System.out.println("session.getRequestParameterMap() = " + session.getRequestParameterMap());
         System.out.println("session.getQueryString() = " + session.getQueryString());
         System.out.println ("WebSocket opened: "+session.getId());
+
     }
 
     @OnMessage
