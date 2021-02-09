@@ -20,17 +20,17 @@ public class HomeController {
     @GetMapping("/")
     public String landingPage() throws URISyntaxException, IOException, DeploymentException {
 
-        javax.websocket.WebSocketContainer container =
-                javax.websocket.ContainerProvider.getWebSocketContainer();
-
-        Session session = container.connectToServer(MyClientEndpoint.class,
-                new URI("wss://vuybyli569.execute-api.us-east-1.amazonaws.com/test"));
-
-        System.out.println("session.getUserProperties() = " + session.getUserProperties());
-        System.out.println("session.getPathParameters() = " + session.getPathParameters());
-        System.out.println("session.getRequestParameterMap() = " + session.getRequestParameterMap());
-        System.out.println("session.getQueryString() = " + session.getQueryString());
-        System.out.println ("WebSocket opened: "+session.getId());
+//        javax.websocket.WebSocketContainer container =
+//                javax.websocket.ContainerProvider.getWebSocketContainer();
+//
+////        Session session = container.connectToServer(MyClientEndpoint.class,
+////                new URI("wss://vuybyli569.execute-api.us-east-1.amazonaws.com/test"));
+////
+////        System.out.println("session.getUserProperties() = " + session.getUserProperties());
+////        System.out.println("session.getPathParameters() = " + session.getPathParameters());
+////        System.out.println("session.getRequestParameterMap() = " + session.getRequestParameterMap());
+////        System.out.println("session.getQueryString() = " + session.getQueryString());
+////        System.out.println ("WebSocket opened: "+session.getId());
         
 
         return "index";
