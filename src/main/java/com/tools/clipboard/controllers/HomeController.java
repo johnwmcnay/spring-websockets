@@ -17,9 +17,7 @@ public class HomeController {
 
     @GetMapping("/testing")
     @ResponseBody
-    public String test(@RequestBody String payload) {
-
-        System.out.println(payload);
+     public String test() {
 
         return "test";
     }
