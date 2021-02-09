@@ -1,5 +1,7 @@
 package com.tools.clipboard.models;
 
+import org.springframework.web.bind.annotation.RequestBody;
+
 import javax.websocket.ClientEndpoint;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -19,7 +21,8 @@ public class MyClientEndpoint {
     }
 
     @OnMessage
-    public String myOnMessage (String txt) {
+    public String myOnMessage (@RequestBody String txt)
+    {
         System.out.println("txt = " + txt);
         return txt;
     }
