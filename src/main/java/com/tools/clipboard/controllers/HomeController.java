@@ -19,7 +19,7 @@ public class HomeController {
     @ResponseBody
     public String test(@RequestBody Map<String, Object> payload) {
 
-        System.out.println(payload);
+        System.out.println(payload.get("connectionId"));
 
         return "test";
     }
