@@ -37,7 +37,8 @@ public class HomeController {
 
     @PostMapping("/connect")
     @ResponseBody
-    public String connectTest() {
+    public String connectTest(@RequestBody String payload) {
+        System.out.println("payload = " + payload);
         System.out.println("connectTest()");
         return "connectTest()";
     }
