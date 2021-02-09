@@ -2,7 +2,10 @@ package com.tools.clipboard.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -14,7 +17,10 @@ public class HomeController {
 
     @GetMapping("/testing")
     @ResponseBody
-    public String test() {
+    public String test(@RequestBody Map<String, Object> payload) {
+
+        System.out.println(payload);
+
         return "test";
     }
 
